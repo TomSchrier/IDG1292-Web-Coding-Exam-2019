@@ -1,0 +1,566 @@
+/* The CSS is divided into multiple sections. You can use ctrl/cmd + f and search for "||" to jump between all the sections.
+Tips from: https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing 
+
+I have added a lot of comments because 
+"adding comments to your CSS will help any future developer work with your CSS file, but will also help you when you come back to the project after a break." */
+
+/* || General styles and common rules */
+
+/* importing NTNUs font */
+@font-face {
+    font-family: 'NTNU DIN Regular';
+    src: url(assets/fonts/ntnu-din-regular.woff);
+}
+
+@font-face {
+    font-family: 'NTNU DIN Bold';
+    src: url(assets/fonts/ntnu-din-bold.woff);
+}
+
+/* CSS that applies to everything */
+* {
+    scroll-behavior: smooth;
+    margin: 0;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+/* common values for all grids */
+.grid-container {
+    display: grid;
+    column-gap: 2%;
+    row-gap: 16px;
+}
+
+figure {
+    margin: 0;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    /* got the vaules for a subtle box-shadow from https://codepen.io/manabox/pen/KzzeNy full credit to the author */
+}
+
+figure img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+figcaption {
+    padding: 2%;
+    /* figcaption touching the figure */
+    margin-top: -10px;
+    border-radius: 0 0 5px 5px;
+}
+
+figcaption.orange {
+    background: linear-gradient(#f68d3b, #f58025);
+}
+
+figcaption.red-violet {
+    background: linear-gradient(#b53699, #ad208e);
+    color: white;
+}
+
+/* || General Typography */
+
+/* creates a hierarchy of typography */
+h1,
+h2,
+h3,
+label,
+legend {
+    font-family: "NTNU DIN Bold";
+    margin-bottom: 0;
+}
+
+/* defining font size with rem */
+h1 {
+    font-size: 3rem;
+}
+
+h2,
+legend {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.33rem;
+}
+
+/* paragraphs have a maximum width to keep the reading experience better */
+p,
+address {
+    color: #333;
+    max-width: 35em;
+    margin-bottom: 2em;
+    font-style: normal;
+}
+
+textarea,
+input,
+option {
+    /* forms */
+    font-size: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    vertical-align: top;
+}
+
+/* Restricts the user to resize the text area horizontally  */
+textarea {
+    resize: vertical;
+    min-height: 1.75em;
+}
+
+/* || Header and Main Navigtion */
+
+/* navigation bar on lagre screens */
+nav {
+    /* using flex to allign the items in the navbar correctly */
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+
+    /* colors */
+    background-color: white;
+    box-shadow: 0 4px 6px -6px black;
+    color: black;
+
+    /* size */
+    height: 7vh;
+    min-height: 40px;
+    width: 100%;
+
+    /* to overlap the page and hero image */
+    position: absolute;
+    top: 0;
+}
+
+nav a {
+    /* removes underline from links until someone hovers over */
+    text-decoration: none;
+}
+
+nav a.active {
+    /* Highlightes the current page */
+    background-color: #00509e;
+    border-radius: 20px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    /* got the vaules for a subtle box-shadow from https://codepen.io/manabox/pen/KzzeNy full credit to the author */
+    color: white;
+    font-weight: bold;
+    padding: 5px 1em;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* the small logo used in  the navigation bar */
+#small-logo {
+    height: 32px;
+
+    /* used to vertacaly allign the logo in the a-tag */
+    display: table;
+}
+
+/* used to center the main content of the page */
+main {
+    line-height: 1.5;
+    margin: 10vh auto;
+    max-width: 70%;
+}
+
+/* || Home page */
+
+/* the hero image on the front page */
+.hero-image {
+    /* Set background. (Photo by Marvin Meyer on Unsplash from https://unsplash.com/photos/SYTO3xs06fU)* *EDITED */
+    background-image: url(assets/img/hero-image-table-with-equipment.jpg);
+
+    /* size */
+    height: 100vh;
+    width: 100%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    /* Position hero-text in the center of the hero image */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* To keep the navnar on top at all times */
+    z-index: -1;
+}
+
+/* text located on top of hero image */
+.hero-text {
+    color: white;
+    margin: 1.5em;
+    text-align: center;
+    text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px
+}
+
+/* animation used on home page */
+@keyframes swipe-up {
+
+    /* Moves the icon up and down along the Y-axis */
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+/* a arrow to hint scrolling on the page */
+#swipe-up-indication {
+    animation: swipe-up 2s ease-in-out 3 alternate-reverse both;
+    height: 7.5vh;
+    /* position related to its parent (the hero image) */
+    position: absolute;
+    /* places the arrow 90% down of the hero image */
+    top: 90%;
+    /* using the "filter" property to get the shadow to work with the icon correectly */
+    filter: drop-shadow(0px 2px 10px gray);
+}
+
+/* grid used on the home page */
+#home-page-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "welcome-article welcome-figure"
+        "origin-figure origin-article"
+        "code-article code-figure"
+        "design-figure design-article";
+}
+
+/* text snippets on the home page */
+.grid-article {
+    align-self: center;
+    max-width: 35em;
+}
+
+.grid-article p,
+dd {
+    text-indent: 1em;
+}
+
+.grid-article p:first-letter {
+    font-size: 1.5em;
+}
+
+/* images and captions on the home page */
+.grid-figure,
+aside {
+    align-self: center;
+}
+
+/* giving grid items a grid-area name */
+#welcome-article {
+    grid-area: welcome-article;
+}
+
+#welcome-figure {
+    grid-area: welcome-figure;
+}
+
+#origin-article {
+    grid-area: origin-article;
+}
+
+#origin-figure {
+    grid-area: origin-figure;
+}
+
+#code-article {
+    grid-area: code-article;
+}
+
+#code-figure {
+    grid-area: code-figure;
+}
+
+#design-article {
+    grid-area: design-article;
+}
+
+#design-figure {
+    grid-area: design-figure;
+}
+
+/* || Programs page */
+
+/* #programmes is content created by provided JavaScript */
+#programmes-container h2,
+dt {
+    text-transform: uppercase;
+}
+
+#programmes-container h3 {
+    font-family: "NTNU DIN Regular";
+    text-transform: capitalize;
+    letter-spacing: 0.05em;
+}
+
+/* First line of each course is bold */
+.course-item p::first-line,
+dt {
+    font-weight: bold;
+}
+
+span.level {
+    color: #6F6F6F;
+    display: block;
+}
+
+dl {
+    padding: 16px;
+    max-width: max-content;
+}
+
+/* || Applications page */
+
+/* grid used on the apllication page */
+#application-page-grid {
+    grid-template-columns: 2fr 1fr;
+    column-gap: 5%;
+    grid-template-areas:
+        "form-grid-input form-grid-image";
+}
+
+#application-page-grid-personal {
+    grid-template-columns: 1fr 1fr;
+}
+
+#application-page-grid-education {
+    grid-template-columns: 1fr;
+}
+
+#form-grid-image {
+    grid-area: form-grid-image;
+}
+
+#form-grid-input {
+    grid-area: form-grid-input;
+}
+
+select {
+    display: block;
+}
+
+input {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+/* submit button on applications page */
+input[type=submit] {
+    background-color: #00509e;
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    /* got the vaules for a subtle box-shadow from https://codepen.io/manabox/pen/KzzeNy full credit to the author */
+    color: white;
+    font-weight: bold;
+    padding: 5px 1em;
+}
+
+/* active submit button on applications page */
+input[type=submit]:active {
+    background-color: #00407e;
+    color: #cccccc;
+}
+
+/* || Contact page */
+
+.nobr {
+    white-space: nowrap;
+}
+
+fieldset,
+iframe,
+dl {
+    margin-bottom: 1em;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    /* got the vaules for a subtle box-shadow from https://codepen.io/manabox/pen/KzzeNy full credit to the author */
+}
+
+/* Google Maps */
+iframe {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    min-height: 375px;
+}
+
+/* insert emoji before email */
+a[href^="mailto"]::before {
+    content: "📧 ";
+}
+
+/* insert emoji before phone number */
+a[href^="tel"]::before {
+    content: "📞 ";
+}
+
+/* layout on contact page */
+#contact-page-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    /* overrides the default gap to give the images more breathing space */
+    row-gap: 48px;
+    grid-template-areas:
+        "contact-information google-maps-embed"
+        "contact-page-grid-g-building contact-page-grid-mustad";
+}
+
+#contact-information {
+    grid-area: contact-information;
+}
+
+#google-maps-embed {
+    grid-area: google-maps-embed;
+}
+
+#contact-page-grid-g-building {
+    grid-area: contact-page-grid-g-building;
+}
+
+#contact-page-grid-mustad {
+    grid-area: contact-page-grid-mustad;
+}
+
+
+#contact-page-grid-g-building,
+#contact-page-grid-mustad {
+    align-self: start;
+}
+
+/* || Footer */
+
+footer {
+    margin-top: 10%;
+    height: 200px;
+    width: 100%;
+}
+
+/* footer-apparance is the gray area of the footer and displays content */
+.footer-appearance {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: lightgray;
+    height: 90%;
+}
+
+/* applies to everything inside the footer */
+.footer-appearance * {
+    height: 33%;
+    margin: 0 2%;
+    max-width: 95%;
+}
+
+/* a button thet thakes ti user back to the top of the site */
+#back-to-top {
+    height: 100%;
+
+    /* used to vertacaly allign the logo in the anchor */
+    display: table;
+    filter: drop-shadow(0px 2px 10px gray)
+}
+
+/* a decorative part of the footer with no functionality */
+#site-end {
+    background-color: #00509e;
+    height: 10%;
+}
+
+/* --- --- --- --- --- --- --- --- --- --- END NORMAL CSS --- --- --- --- --- --- --- --- --- --- */
+
+/* || Small screen size */
+
+@media only screen and (max-width: 600px) {
+
+    /* on mobile we make all grids just one column */
+    grid-container,
+    #home-page-grid,
+    #application-page-grid,
+    #application-page-grid-personal,
+    #contact-page-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* layout on home page (mobile) */
+    #home-page-grid {
+        grid-template-areas:
+            "welcome-article"
+            "welcome-figure"
+            "origin-article"
+            "origin-figure"
+            "code-article"
+            "code-figure"
+            "design-article"
+            "design-figure";
+    }
+
+    /* layout on application page (mobile) */
+    #application-page-grid {
+        grid-template-areas:
+            "form-grid-input";
+    }
+
+    #form-grid-image {
+        display: none;
+    }
+
+    /* layout on contact page (mobile) */
+    #contact-page-grid {
+        grid-template-areas:
+            "contact-information"
+            "google-maps-embed"
+            "contact-page-grid-g-building"
+            "contact-page-grid-mustad";
+    }
+
+    /* navigation bar is vertical on mobile */
+    nav {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        height: 20vh;
+    }
+
+    /* used to center content in the a-tag */
+    nav a {
+        display: table;
+        vertical-align: middle;
+    }
+
+    /* hides some elements that might clutter the screen at this size */
+    .mobile-hide {
+        display: none;
+    }
+
+    /* increase font size, line-height etc */
+    main {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin: 1em auto;
+        max-width: 90%;
+        margin: 22vh auto auto auto;
+    }
+}
+
+/* Disable smooth scrolling for users that have reduced motion in their settings */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto;
+        animation: none;
+    }
+}

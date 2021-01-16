@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="A page to send in your application to NTNU Design Gjøvik. Start or extend your higher education here.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/jpg" href="assets/icons/favicon.png"> <title>NTNU Design Gjøvik |
+    Applications</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="mobile-hide"><img id="small-logo" src=assets/icons/ntnu-logo.svg
+                    alt="NTNU logo"></a>
+            <a href="index.html">Home</a>
+            <a href="programmes-page.html">Programmes</a>
+            <a class="active" href="application-page.html">Applications</a>
+            <a href="contact-page.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+
+        <h1>Start studying at NTNU</h1>
+        <p>On this page, you may apply to one of our design programmes. The page displays a form requesting the
+            information we
+            will need to get started.</p>
+
+        <!-- start grid for form and image -->
+        <div class="grid-container" id="application-page-grid">
+
+            <!-- start entire form -->
+            <form action="#" method="POST" id="form-grid-input">
+
+                <!-- start  personal form -->
+                <fieldset>
+                    <legend>Contact details</legend>
+
+                    <!-- start grid for personal form -->
+                    <div class="grid-container" id="application-page-grid-personal">
+                        <label for="first-name">First name:
+                            <input type="text" id="first-name" name="first-name" maxlength="30" required="required"
+                                placeholder="John" />
+                        </label>
+
+                        <label for="surname">Surname:
+                            <input type="text" id="surname" name="surname" maxlength="30" required="required"
+                                placeholder="Smith" />
+                        </label>
+
+                        <label for="phone-number">Phone number:
+                            <input type="tel" id="phone-number" name="phone-number" maxlength="10" required="required"
+                                placeholder="123 45 678" />
+                        </label>
+
+                        <label for="email">E-mail:
+                            <input type="email" id="email" name="email" maxlength="320" required="required"
+                                placeholder="email@example.com" />
+                        </label>
+
+                        <!-- end grid for personal form -->
+                    </div>
+                </fieldset>
+
+                <!-- start application form -->
+                <fieldset>
+                    <legend>Application information</legend>
+
+                    <!-- start grid for education form -->
+                    <div class="grid-container" id="application-page-grid-education">
+                        <label for="programmes">What program are you applying to?
+                            <select id="programmes" name="programmes">
+                                <option value="bwu">Web Development (Bachelor's degree)</option>
+                                <option value="bixd">Interaction Design (Bachelor's degree)</option>
+                                <option value="bmed">Graphic Design (Bachelor's degree)</option>
+                                <option value="arweb">Web Design (One year programme)</option>
+                                <option value="mixd">Interaction Design (Master's degree)</option>
+                            </select>
+                        </label>
+
+                        <label for="education">Academic background
+                            <textarea id="education" name="academic-background" required="required"
+                                placeholder="Please tell us about your academic background (required)"></textarea>
+                        </label>
+
+                        <label for="comments">Other comments
+                            <textarea id="comments" name="comments"
+                                placeholder="Anything else we should know? (not required)"></textarea>
+                        </label>
+
+                        <!-- end grid for education form -->
+                    </div>
+                </fieldset>
+
+                <!-- submit button for entire -->
+                <input type="submit" value="Send application" />
+            </form>
+
+            <aside>
+                <figure class="grid-figure mobile-hide" id="form-grid-image">
+                    <!-- Photo by javier trueba on Unsplash -->
+                    <img src="assets/img/a-student-with-books-in-a-classroom.jpg"
+                        alt="A student carrying books in a classroom">
+                    <figcaption class="red-violet">Start or extend your higher education at NTNU.</figcaption>
+                </figure>
+            </aside>
+
+            <!-- end grid for form and image -->
+        </div>
+
+    </main>
+    <footer>
+        <div class="footer-appearance">
+            <img src="assets/icons/fakultet-for-arkitektur-og-design-eng-logo.svg" alt="NTNU Logo">
+            <a href="#top" class="mobile-hide"><img id="back-to-top" src="assets/icons/back-to-top.svg"
+                    alt="Back to top"></a>
+        </div>
+        <div id="site-end"></div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="description" content="A overview over all programs and their courses at NTNU Design Gjøvik">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/jpg" href="assets/icons/favicon.png"> <title>NTNU Design Gjøvik | Programmes
+    </title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="mobile-hide"><img id="small-logo" src=assets/icons/ntnu-logo.svg
+                    alt="NTNU logo"></a>
+            <a href="index.html">Home</a>
+            <a class="active" href="programmes-page.html">Programmes</a>
+            <a href="application-page.html">Applications</a>
+            <a href="contact-page.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <h1>All our programmes and courses</h1>
+        <p>We offer 3 bachelors, 1 master and 1-year programme in Gjøvik. on this page, we have gathered all the
+            programmes and their courses. Take a look.</p>
+
+            <dl>
+                <dt>bwu</dt>
+                <dd>The code for bachelor's degree programme in Web Development</dd>
+
+                <dt>bixd</dt>
+                <dd>The code for bachelor's degree programme in Interaction Design</dd>
+
+                <dt>bmed</dt>
+                <dd>The code for bachelor's degree programme in Graphic Design</dd>
+
+                <dt>arweb</dt>
+                <dd>The code for the one year programme in Web Design</dd>
+
+                <dt>mixd</dt>
+                <dd>The code for Master's degree programme in Interaction Design</dd>
+            </dl>
+
+            <!-- In this div the Javascript will generate some HTML -->
+            <div id="programmes-container"></div>
+
+        <!-- programmes-db.js = contains the list of all the programmes in which the courses are grouped -->
+        <script src="scripts/programmes-db.js"></script>
+
+        <script src="scripts/helpers.js"></script>
+        <script src="scripts/show-all-courses.js"></script>
+
+        <!-- full credit for JavaScript by Carlos Vicient Monllao and tutorial on how to implement it into this webpage -->
+    </main>
+    <footer>
+        <div class="footer-appearance">
+            <img src="assets/icons/fakultet-for-arkitektur-og-design-eng-logo.svg" alt="NTNU Logo">
+            <a href="#top" class="mobile-hide"><img id="back-to-top" src="assets/icons/back-to-top.svg"
+                    alt="Back to top"></a>
+        </div>
+        <div id="site-end"></div>
+    </footer>
+</body>
+
+</html>
